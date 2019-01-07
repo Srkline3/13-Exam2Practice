@@ -6,8 +6,8 @@ This problem provides practice at:
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
          Mark Hays, Amanda Stouder, Aaron Wilkin, their colleagues,
-         and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         and Trey Kline.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 ###############################################################################
 # Students:
@@ -41,7 +41,7 @@ def main():
     ###########################################################################
 
     # run_test_init()
-    # run_test_append_string()
+    run_test_append_string()
     # run_test_double()
     # run_test_shrink()
     # run_test_double_then_shrink()
@@ -95,7 +95,7 @@ class Box(object):
           :type volume: int
         """
         # ---------------------------------------------------------------------
-        # TODO: 2. Implement and test this function.
+        # DONE: 2. Implement and test this function.
         #     See the testing code (below) for more examples.
         # ---------------------------------------------------------------------
         # ---------------------------------------------------------------------
@@ -103,6 +103,10 @@ class Box(object):
         #    DIFFICULTY:      3
         #    TIME ESTIMATE:   5 minutes.
         # ---------------------------------------------------------------------
+        self.contents = contents
+        self.volume = volume
+        if len(contents) > volume:
+           self.contents = ''
 
     def append_string(self, additional_contents):
         """
@@ -158,6 +162,13 @@ class Box(object):
         #       Read_this_ONLY_when_asked_Part_2.txt
         #    and complete your work on the problem.
         # ---------------------------------------------------------------------
+        length_new = len(self.contents)+len(additional_contents)
+        if length_new > self.volume:
+            for k in range(self.volume-len(self.contents)):
+                self.contents+additional_contents[k]
+            for k in range(length_new-self.volume):
+                s = '' + additional_contents[(len(additional_contents)-(length_new-self.volume))+k]
+            return s
 
     def double(self):
         """
