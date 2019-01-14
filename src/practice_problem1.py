@@ -162,13 +162,17 @@ class Box(object):
         #       Read_this_ONLY_when_asked_Part_2.txt
         #    and complete your work on the problem.
         # ---------------------------------------------------------------------
-        length_new = len(self.contents)+len(additional_contents)
-        if length_new > self.volume:
-            for k in range(self.volume-len(self.contents)):
-                self.contents+additional_contents[k]
-            for k in range(length_new-self.volume):
-                s = '' + additional_contents[(len(additional_contents)-(length_new-self.volume))+k]
-            return s
+        s = ''
+        if len(additional_contents)>self.volume - len(self.contents):
+            for k in range(self.volume-len(self.contents), len(additional_contents)):
+                s = s + additional_contents[k]
+            for k in range(self.volume - len(self.contents)):
+                self.contents = self.contents + additional_contents[k]
+
+        else:
+            self.contents = self.contents + additional_contents
+        return s
+
 
     def double(self):
         """
