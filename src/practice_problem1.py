@@ -41,8 +41,8 @@ def main():
     ###########################################################################
 
     # run_test_init()
-    run_test_append_string()
-    # run_test_double()
+    #run_test_append_string()
+    run_test_double()
     # run_test_shrink()
     # run_test_double_then_shrink()
     # run_test_reset()
@@ -105,8 +105,11 @@ class Box(object):
         # ---------------------------------------------------------------------
         self.contents = contents
         self.volume = volume
+        self.original_contents = contents
+        self.original_volume = volume
         if len(contents) > volume:
            self.contents = ''
+           self.original_contents = ''
 
     def append_string(self, additional_contents):
         """
@@ -140,7 +143,7 @@ class Box(object):
           :type additional_contents: str
         """
         # ---------------------------------------------------------------------
-        # TODO: 3. Implement and test this function.
+        # DONE: 3. Implement and test this function.
         #     See the testing code (below) for more examples.
         # ---------------------------------------------------------------------
         # ---------------------------------------------------------------------
@@ -208,7 +211,7 @@ class Box(object):
           #                       contents that did NOT fit]
         """
         # ---------------------------------------------------------------------
-        # TODO: 4. Implement and test this function.
+        # DONE: 4. Implement and test this function.
         #     The testing code is already written for you (above).
         # ---------------------------------------------------------------------
         # ---------------------------------------------------------------------
@@ -220,6 +223,11 @@ class Box(object):
         # FOR FULL CREDIT, YOUR SOLUTION MUST BE NO MORE THAN
         #    ** TWO **   LINES OF CODE.
         #######################################################################
+
+        self.contents = self.contents+self.contents[:(self.volume-len(self.contents))]
+        return self.original_contents[len(self.original_contents)-(2*len(self.original_contents)-self.volume):]
+
+
 
     def shrink(self, new_volume):
         """
